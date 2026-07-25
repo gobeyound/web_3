@@ -1267,14 +1267,12 @@
     background: #0a0a0a !important;
     box-shadow: 0 -14px 40px rgba(0, 0, 0, 0.45) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
-    margin-top: 40vh !important;
   }
   #section-boom  {
     z-index: 3 !important;
     background: var(--blue, #3D3DFF) !important;
     box-shadow: 0 -14px 45px rgba(0, 0, 0, 0.5) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
-    margin-top: 40vh !important;
   }
 
   /* Inner sticky wrapper — full viewport height, centered content */
