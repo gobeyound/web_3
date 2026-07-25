@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const barFill = document.getElementById('loader-bar-fill');
       const fillText = document.getElementById('loader-fill-text');
       let current = 0;
-      const duration = 2500; // total ms
+      const duration = 800; // total ms (fast & snappy preloader)
       const startTime = performance.now();
 
       function animateLoader(now) {
@@ -263,27 +263,26 @@ document.addEventListener('DOMContentLoaded', () => {
         if (progress < 1) {
           requestAnimationFrame(animateLoader);
         } else {
-          setTimeout(() => {
-            loader.classList.add('hidden');
-            docEl.classList.remove('is-preloading');
+          // Hide preloader immediately without arbitrary delay
+          docEl.classList.remove('is-preloading');
+          loader.classList.add('hidden');
 
-            const fabContainer = document.querySelector('.fab-container');
-            const agentBtn = document.getElementById('ai-agent-btn');
-            if (fabContainer && typeof gsap !== 'undefined') {
-              gsap.fromTo(fabContainer,
-                { opacity: 0, scale: 0.8 },
-                { opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(1.4)', clearProps: 'all' }
-              );
-            }
-            if (agentBtn && typeof gsap !== 'undefined') {
-              gsap.fromTo(agentBtn,
-                { opacity: 0, scale: 0.8 },
-                { opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(1.4)', clearProps: 'all' }
-              );
-            }
+          const fabContainer = document.querySelector('.fab-container');
+          const agentBtn = document.getElementById('ai-agent-btn');
+          if (fabContainer && typeof gsap !== 'undefined') {
+            gsap.fromTo(fabContainer,
+              { opacity: 0, scale: 0.8 },
+              { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(1.4)', clearProps: 'all' }
+            );
+          }
+          if (agentBtn && typeof gsap !== 'undefined') {
+            gsap.fromTo(agentBtn,
+              { opacity: 0, scale: 0.8 },
+              { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(1.4)', clearProps: 'all' }
+            );
+          }
 
-            setTimeout(() => loader.remove(), 900);
-          }, 400);
+          setTimeout(() => loader.remove(), 400);
         }
       }
 
@@ -512,14 +511,19 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach(el => revealObserver.observe(el));
   }
 
-  // ── Service word hover pulse ──
+  // ── Service word hover pulse (desktop only) ──
   document.querySelectorAll('.service-big-word').forEach(word => {
     word.addEventListener('mouseenter', () => {
-      word.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
-      word.style.transform = 'scale(1.04)';
+      if (window.innerWidth > 1024) {
+        word.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+        word.style.transform = 'scale(1.04)';
+      }
     });
     word.addEventListener('mouseleave', () => {
-      word.style.transform = 'scale(1)';
+      if (window.innerWidth > 1024) {
+        word.style.transform = 'scale(1)';
+        word.style.transition = '';
+      }
     });
   });
 

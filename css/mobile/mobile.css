@@ -1340,6 +1340,8 @@
     text-align: center !important;
     text-transform: uppercase !important;
     white-space: nowrap !important;
+    transform: none !important;
+    transition: none !important;
   }
 
   /* SCRIPT LABELS */
