@@ -1890,15 +1890,15 @@ body.nav-open .ticker-wrap {
   }
 }
 
-/* Mobile — images hidden, clean centered layout */
+/* Mobile — images hidden, clean static card layout */
 @media (max-width: 768px) {
   .parallax-word-section {
-    min-height: 100vh;
+    min-height: auto;
     overflow: visible;
   }
 
   .parallax-sticky {
-    min-height: 100vh;
+    min-height: auto;
     overflow: visible;
     display: flex;
     align-items: center;
@@ -1909,7 +1909,7 @@ body.nav-open .ticker-wrap {
   .parallax-text-content {
     position: relative;
     z-index: 2;
-    padding: 0 24px;
+    padding: 0;
     text-align: center;
     opacity: 1 !important;
     transform: none !important;
@@ -1918,33 +1918,6 @@ body.nav-open .ticker-wrap {
 
   .parallax-images {
     display: none !important;
-  }
-
-  .service-big-word {
-    font-size: 56px !important;
-    font-weight: 800 !important;
-    line-height: 1 !important;
-    margin: 0 0 12px 0 !important;
-    letter-spacing: -1px !important;
-  }
-
-  .script-label {
-    font-size: 12px !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 2px !important;
-    margin: 0 0 12px 0 !important;
-  }
-
-  .service-word-wrap {
-    text-align: left !important;
-    margin-bottom: 20px !important;
-  }
-
-  .service-word-desc {
-    font-size: 13px !important;
-    line-height: 1.6 !important;
-    max-width: 100% !important;
   }
 }
 
