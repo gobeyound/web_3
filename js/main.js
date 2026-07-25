@@ -529,9 +529,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Parallax Scroll-Driven Animation ──
   const parallaxSections = document.querySelectorAll('.parallax-word-section');
-  if (parallaxSections.length && window.innerWidth > 1024 && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-    {
-      // ── Desktop: pin + card-rotation + image parallax (now runs on all screens > 1024px) ──
+  if (parallaxSections.length && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    const mm = gsap.matchMedia();
+
+    // Desktop ONLY (> 1024px) — pin + card-rotation + image parallax
+    mm.add("(min-width: 1025px)", () => {
       parallaxSections.forEach((section, i) => {
         gsap.set(section, { zIndex: i + 1 });
 
@@ -563,14 +565,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const imgs = section.querySelectorAll('.parallax-img');
-        // 6 unique entry vectors — each image travels from a distinct origin
         const entryVectors = [
-          { x: '-22vw', y: '-14vh', rot: -20 }, // top-left  → slides from far left + above
-          { x:  '20vw', y: '-16vh', rot:  18 }, // top-right → slides from right + above
-          { x: '-24vw', y:   '6vh', rot: -14 }, // mid-left  → slides from far left
-          { x:  '10vw', y:  '22vh', rot:  12 }, // mid-right → slides from below + slight right
-          { x: '-12vw', y:  '24vh', rot: -22 }, // bot-left  → slides from below + left
-          { x:  '22vw', y:  '18vh', rot:  20 }, // bot-right → slides from below + far right
+          { x: '-22vw', y: '-14vh', rot: -20 },
+          { x:  '20vw', y: '-16vh', rot:  18 },
+          { x: '-24vw', y:   '6vh', rot: -14 },
+          { x:  '10vw', y:  '22vh', rot:  12 },
+          { x: '-12vw', y:  '24vh', rot: -22 },
+          { x:  '22vw', y:  '18vh', rot:  20 },
         ];
         imgs.forEach((img, index) => {
           const vec = entryVectors[index % entryVectors.length];
@@ -583,8 +584,18 @@ document.addEventListener('DOMContentLoaded', () => {
           );
         });
       });
-    }
-    // Mobile: no animation — sections display statically via CSS
+    });
+
+    // Mobile / Tablet (<= 1024px): cards are 100% static, unmovable, with zero GSAP pin or animation
+    mm.add("(max-width: 1024px)", () => {
+      parallaxSections.forEach(section => {
+        gsap.set(section, { clearProps: "all" });
+        const inner = section.querySelector('.parallax-sticky');
+        if (inner) gsap.set(inner, { clearProps: "all" });
+        const imgs = section.querySelectorAll('.parallax-img');
+        imgs.forEach(img => gsap.set(img, { clearProps: "all" }));
+      });
+    });
   }
 
   // ── OSMO-style reel ring: circle + 36 tick marks ──
