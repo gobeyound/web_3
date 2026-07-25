@@ -537,22 +537,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (i < parallaxSections.length - 1) {
           ScrollTrigger.create({
             trigger: section,
-            start: 'bottom bottom',
-            end: 'bottom top',
+            start: 'top top',
+            end: '+=120%',
             pin: true,
             pinSpacing: false,
           });
         }
 
         if (i > 0) {
-          gsap.set(inner, { rotation: 30, transformOrigin: 'bottom left' });
+          gsap.set(inner, { rotation: 18, transformOrigin: 'bottom left' });
           gsap.to(inner, {
             rotation: 0,
             ease: 'none',
             scrollTrigger: {
               trigger: section,
               start: 'top bottom',
-              end: 'top 25%',
+              end: 'top top',
               scrub: true,
             },
           });
