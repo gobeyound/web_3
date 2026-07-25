@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <circle cx="150" cy="150" r="150" fill="#0b0a1d" />
+  <g transform="translate(20, 95)">
+    <!-- Fast-Forward Arrows >> -->
+    <path d="M20 20 L58 55 L20 90 Z" fill="#FFFFFF" />
+    <path d="M60 20 L98 55 L60 90 Z" fill="#FFFFFF" />
+    <!-- Text Blink Beyond -->
+    <text x="115" y="52" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="44" font-weight="900" fill="#FFFFFF" letter-spacing="-1">Blink</text>
+    <text x="115" y="98" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="44" font-weight="900" fill="#FFFFFF" letter-spacing="-1">Beyond</text>
+  </g>
+</svg>
