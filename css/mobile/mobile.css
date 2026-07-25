@@ -68,7 +68,6 @@
     position: relative !important;
   }
 
-  .bbb-stack-wrapper,
   .cards-section,
   .who-section,
   .whatwedo-section,
@@ -401,98 +400,7 @@
     letter-spacing: 2px;
   }
 
-  /* ── Blink / Build / Boom sections — complete mobile layout ── */
-  .parallax-word-section {
-    height: auto !important;
-    min-height: auto !important;
-    padding: 52px 24px 40px !important;
-    background: #F3F3F4 !important;
-    overflow: visible !important;
-  }
-
-  .parallax-sticky {
-    position: relative !important;
-    height: auto !important;
-    min-height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    padding: 0 !important;
-    /* Kill GSAP-applied transforms on mobile */
-    transform: none !important;
-    will-change: auto !important;
-    transform-origin: unset !important;
-    rotation: 0 !important;
-  }
-
-  .parallax-text-content {
-    width: 100% !important;
-    text-align: left !important;
-    order: -1 !important;
-    margin-bottom: 28px !important;
-    position: relative !important;
-    z-index: 2 !important;
-  }
-
-  /* service-word-wrap must be flex so absolute labels flow in order */
-  .service-word-wrap {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    position: relative !important;
-    margin-bottom: 14px !important;
-    overflow: visible !important;
-  }
-
-  /* Reset script labels from absolute to in-flow — tight spacing */
-  .script-label,
-  .script-label.top-left,
-  .script-label.bottom-right {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    bottom: auto !important;
-    right: auto !important;
-    display: block !important;
-    white-space: normal !important;
-    font-family: var(--font-script) !important;
-    font-size: 15px !important;
-    font-weight: 400 !important;
-    letter-spacing: 0 !important;
-    text-transform: none !important;
-    color: rgba(0, 0, 0, 0.38) !important;
-    margin: 0 !important;
-    line-height: 1 !important;
-  }
-
-  .script-label.top-left {
-    order: 0 !important;
-    margin-bottom: 0 !important;
-  }
-
-  .service-big-word {
-    order: 1 !important;
-    font-size: clamp(64px, 20vw, 96px) !important;
-    letter-spacing: -2px !important;
-    line-height: 0.88 !important;
-    margin: 2px 0 !important;
-  }
-
-  .script-label.bottom-right {
-    order: 2 !important;
-    margin-top: 0 !important;
-    align-self: flex-end !important;
-  }
-
-  .service-word-desc {
-    font-size: 14px !important;
-    line-height: 1.65 !important;
-    color: rgba(0, 0, 0, 0.5) !important;
-    max-width: 100% !important;
-    margin-top: 8px !important;
-  }
-
-  /* Images: hidden on mobile */
+  /* ── Blink / Build / Boom sections — mobile layout (handled in main stack block) ── */
   .parallax-images {
     display: none !important;
   }
@@ -1325,7 +1233,6 @@
     width: 100% !important;
     max-width: 100vw !important;
     overflow: visible !important;
-    overflow-x: clip !important;
     box-sizing: border-box !important;
     background: #0a0a0a !important;
   }
