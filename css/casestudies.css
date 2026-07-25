@@ -219,6 +219,10 @@
   position: relative;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
   text-decoration: none;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .uiverse-card:hover {
@@ -473,14 +477,17 @@
 
 .uiverse-card-title {
   font-family: var(--font-display, 'Barlow Condensed', sans-serif);
-  font-size: 20px;
+  font-size: clamp(18px, 2.2vw, 22px);
   font-weight: 800;
   text-transform: uppercase;
   color: #ffffff;
   letter-spacing: 0.5px;
-  line-height: 1.2;
+  line-height: 1.22;
   margin-bottom: 8px;
   transition: color 0.25s ease;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 .uiverse-card:hover .uiverse-card-title {
@@ -1064,26 +1071,59 @@
 
 /* ── Mobile Responsive Rules for Case Studies ── */
 @media (max-width: 900px) {
+  .cs-container {
+    padding: 0 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
   .cs-main-layout {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .cs-content-area {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .cs-sidebar {
     position: static;
     top: auto;
+    padding: 12px 14px;
+    border-radius: 14px;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .cs-nav-list {
     flex-direction: row;
     overflow-x: auto;
-    padding-bottom: 6px;
+    gap: 8px;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .cs-nav-list::-webkit-scrollbar {
+    display: none;
   }
 
   .cs-nav-btn {
     white-space: nowrap;
-    padding: 10px 14px;
-    font-size: 12.5px;
+    padding: 9px 14px;
+    font-size: 12px;
+    border-radius: 8px;
+    flex-shrink: 0;
   }
 
   .insta-grid {
@@ -1092,15 +1132,381 @@
   }
 
   .cs-cards-grid {
-    grid-template-columns: 1fr;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 18px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 
+  .uiverse-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    border-radius: 14px !important;
+    margin: 0 auto !important;
+  }
+
+  .webdev-card-browser-bar {
+    padding: 8px 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+  }
+
+  .webdev-browser-url {
+    font-size: 9.5px !important;
+    max-width: 140px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  .webdev-card-preview {
+    min-height: 120px !important;
+    padding: 12px 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+  }
+
+  .webdev-client-meta {
+    font-size: 9.5px !important;
+    padding: 3px 8px !important;
+    max-width: 85% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  .webdev-impact-badge {
+    font-size: 11px !important;
+    padding: 4px 10px !important;
+    max-width: 90% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  .webdev-card-body {
+    padding: 14px 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .webdev-industry-tag {
+    font-size: 10px !important;
+  }
+
+  .uiverse-card-title {
+    font-size: clamp(15px, 4.2vw, 18px) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 6px !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    hyphens: auto !important;
+    max-width: 100% !important;
+  }
+
+  .uiverse-card-desc {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .webdev-metrics-list {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 5px !important;
+    margin: 8px 0 10px 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .webdev-metric-chip {
+    font-size: 10px !important;
+    padding: 3px 8px !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    box-sizing: border-box !important;
+  }
+
+  .webdev-tech-list {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+    margin-bottom: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .webdev-tech-pill {
+    font-size: 9.5px !important;
+    padding: 2.5px 7px !important;
+    max-width: 100% !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    box-sizing: border-box !important;
+  }
+
+  .uiverse-card-footer {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    padding-top: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .webdev-live-status {
+    font-size: 9.5px !important;
+  }
+
+  .uiverse-view-btn {
+    font-size: 10.5px !important;
+    letter-spacing: 0.5px !important;
+    white-space: nowrap !important;
+  }
+
+  .cs-detail-hero {
+    padding: 16px 0 20px !important;
+  }
+
+  .cs-detail-top-nav {
+    margin-bottom: 16px !important;
+    gap: 8px !important;
+  }
+
+  .cs-detail-top-nav > a {
+    padding: 8px 14px !important;
+    font-size: 11.5px !important;
+  }
+
+  .cs-detail-top-nav > div {
+    padding: 5px 10px !important;
+    font-size: 10.5px !important;
+  }
+
+  .cs-breadcrumb {
+    font-size: 11px !important;
+    gap: 5px !important;
+    margin-bottom: 16px !important;
+    flex-wrap: wrap !important;
+    line-height: 1.4 !important;
+  }
+
+  .cs-detail-title {
+    font-size: clamp(22px, 6.5vw, 32px) !important;
+    line-height: 1.18 !important;
+    margin-bottom: 10px !important;
+    letter-spacing: 0.5px !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .cs-detail-tagline {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 20px !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+  }
+
+  /* Stats Bar */
   .cs-detail-stats-bar {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-bottom: 24px !important;
   }
 
+  .cs-detail-stat-card {
+    padding: 14px 16px !important;
+    border-radius: 12px !important;
+  }
+
+  .cs-stat-number {
+    font-size: clamp(24px, 7vw, 32px) !important;
+    margin-bottom: 2px !important;
+  }
+
+  .cs-stat-label {
+    font-size: 10.5px !important;
+  }
+
+  /* Live buttons wrap */
+  .cs-live-btn-wrap {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    margin-bottom: 28px !important;
+  }
+
+  .cs-live-btn-wrap > a,
+  .cs-live-btn-wrap > div {
+    width: 100% !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+  }
+
+  .cs-live-btn {
+    padding: 12px 20px !important;
+    font-size: 13px !important;
+    letter-spacing: 1px !important;
+  }
+
+  .cs-live-btn-wrap .btn-secondary {
+    padding: 12px 20px !important;
+    font-size: 12px !important;
+  }
+
+  /* Browser Showcase Frame */
+  .cs-showcase-frame {
+    border-radius: 14px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .cs-browser-header {
+    height: auto !important;
+    min-height: 42px !important;
+    padding: 8px 12px !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .cs-browser-url {
+    font-size: 10px !important;
+    padding: 3px 10px !important;
+    width: auto !important;
+    max-width: 140px !important;
+    margin-left: 0 !important;
+  }
+
+  .cs-browser-header > div:last-child {
+    margin-left: auto !important;
+    gap: 4px !important;
+  }
+
+  .cs-browser-header button {
+    font-size: 10px !important;
+    padding: 3px 8px !important;
+  }
+
+  .cs-showcase-image-box {
+    min-height: 250px !important;
+    padding: 20px 12px !important;
+  }
+
+  .cs-showcase-image-box > div {
+    padding: 20px 14px !important;
+    border-radius: 14px !important;
+  }
+
+  .cs-showcase-image-box h2 {
+    font-size: clamp(20px, 5.5vw, 28px) !important;
+  }
+
+  .cs-showcase-image-box p {
+    font-size: 13px !important;
+    margin-bottom: 16px !important;
+  }
+
+  #tabContentIframe {
+    height: 360px !important;
+  }
+
+  /* Story Grid Narrative */
   .cs-story-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-bottom: 36px !important;
+  }
+
+  .cs-story-box {
+    padding: 18px 14px !important;
+    border-radius: 14px !important;
+    margin-bottom: 16px !important;
+    position: static !important; /* disable sticky sidebar on mobile */
+  }
+
+  .cs-story-num {
+    font-size: 11px !important;
+    letter-spacing: 1.5px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .cs-story-heading {
+    font-size: clamp(18px, 5vw, 22px) !important;
+    margin-bottom: 12px !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
+  }
+
+  .cs-story-p {
+    font-size: 13.5px !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.82) !important;
+  }
+
+  .cs-workflow-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .cs-deliverables-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .cs-deliverables-grid > div {
+    padding: 12px !important;
+    gap: 10px !important;
+  }
+
+  .cs-tech-pill-wrap {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .cs-tech-pill {
+    font-size: 10.5px !important;
+    padding: 4px 10px !important;
+  }
+
+  .cs-prev-next-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .cs-bottom-nav-ctas {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding-top: 20px !important;
+    margin-top: 28px !important;
+  }
+
+  .service-case-study-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    font-size: 11.5px !important;
+    padding: 12px 16px !important;
   }
 
   .insta-modal-box {
@@ -1122,6 +1528,41 @@
 }
 
 @media (max-width: 600px) {
+  .cs-container {
+    padding: 0 12px !important;
+  }
+
+  .cs-header-title {
+    font-size: clamp(24px, 7.5vw, 34px) !important;
+  }
+
+  .cs-header-desc {
+    font-size: 13px !important;
+  }
+
+  .insta-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .insta-profile-card {
+    padding: 14px !important;
+  }
+
+  .insta-avatar-wrap {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .insta-handle {
+    font-size: 16px !important;
+  }
+
+  .insta-cta-btn {
+    font-size: 10.5px !important;
+    padding: 5px 10px !important;
+  }
+
   .cs-floating-back-btn span {
     font-size: 11px;
   }
